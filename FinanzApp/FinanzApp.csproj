@@ -77,11 +77,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\Login\Model\" />
-	  <Folder Include="Views\Login\ViewModels\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <GoogleServicesJson Include="Platforms\Android\google-services.json" />
 	</ItemGroup>
 
