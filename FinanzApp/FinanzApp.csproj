@@ -68,6 +68,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
 		<PackageReference Include="InputKit.Maui" Version="4.4.3" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.10" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.10" />
