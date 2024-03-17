@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "195906641744",
+    "project_id": "finanzapp-5bbca",
+    "storage_bucket": "finanzapp-5bbca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195906641744:android:0b65ec92fe0d81b8d9d655",
+        "android_client_info": {
+          "package_name": "com.johnkerlin.finanzapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0CNu_iB3hTCq6kGxnxZGEsbGoBhrtRNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

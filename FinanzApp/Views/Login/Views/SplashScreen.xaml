@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinanzApp.Views.Login.Views.SplashScreen"
+             xmlns:animation="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             Title="SplashScreen">
+    <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+       
+            <animation:SKLottieView Grid.Row="0"
+                                    RepeatCount="-1"
+                                    RepeatMode="Restart"
+                                    Source="splashScreen.json"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="100"
+                                        WidthRequest="100"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"/>
+        
+    </StackLayout>
+</ContentPage>

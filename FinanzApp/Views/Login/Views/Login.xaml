@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
+             xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+             x:Class="FinanzApp.Views.Login.Views.Login"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Margin="20,10,20,10"
+                         VerticalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="Start"
+                     Opacity="0"
+                     x:Name="stackInicial">
+            <Image Source="icono.png"
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   HorizontalOptions="Start"
+                   Margin="-7,20,0,0" />
+            <Label Text="Login"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="White"
+               Margin="0,20,0,0" />
+            <Label Text="Inicia sesión con tus credenciales"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               FontSize="20"
+               FontAttributes="None"
+               TextColor="White" />
+        </StackLayout>
+        
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Spacing="20"
+                     Opacity="0"
+                     x:Name="StackEmailPass">
+            <input:AdvancedEntry Title="Ingresa tu email"
+                                 VerticalOptions="CenterAndExpand"
+                                 BackgroundColor="Transparent"
+                                 Placeholder="ejemplo@dominio.com"
+                                 PlaceholderColor="LightGray"
+                                 IconImage="mail.png"
+                                 TextColor="White">
+                <input:AdvancedEntry.Validations>
+                    <validation:RegexValidation Pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                                Message="Correo invalido" />
+                </input:AdvancedEntry.Validations>
+                
+            </input:AdvancedEntry>
+            <input:AdvancedEntry Title="Ingresa tu clave"
+                                 VerticalOptions="CenterAndExpand"
+                                 BackgroundColor="Transparent"
+                                 IsPassword="True"
+                                 Placeholder="********"
+                                 PlaceholderColor="LightGray"
+                                 IconImage="pasword.png"
+                                 TextColor="White">
+                <input:AdvancedEntry.Validations>
+                    <validation:RequiredValidation Message="Clave invalida" />
+                </input:AdvancedEntry.Validations>
+            </input:AdvancedEntry>
+            <Label Text="Olvidé mi clave secreta"
+                   FontAttributes="Italic"
+                   TextColor="White"
+                   x:Name="lblRecuperar"
+                   TextDecorations="Underline"
+                   FontSize="13"
+                   HeightRequest="20"
+                   VerticalTextAlignment="Center"
+                   HorizontalOptions="End"
+                   Margin="0,0,10,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="lblRecuperarClave"
+                                          Tapped="lblRecuperarClave_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Border HeightRequest="2"
+                    BackgroundColor="LightGray"
+                    Opacity="0.5"
+                    Margin="0,10,0,0"/>
+            <Button BackgroundColor="{DynamicResource PrimaryColor}"
+                    TextColor="White"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    Margin="0,10,0,0"
+                    Text="Iniciar sesión"
+                    CornerRadius="10" />
+        </StackLayout>
+        <Label Text="No tienes una cuenta? Crear"
+               FontAttributes="Italic"
+               x:Name="lblCrear"
+               TextDecorations="Underline"
+               FontSize="13"
+               HeightRequest="30"
+               VerticalTextAlignment="End"
+               HorizontalOptions="Center"
+               VerticalOptions="End"
+               Margin="0,0,0,20"
+               Opacity="0">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer x:Name="lblCrearTapped"
+                                      Tapped="lblCrearTapped_Tapped"/>
+            </Label.GestureRecognizers>
+        </Label>
+    </StackLayout>
+</ContentPage>
