@@ -7,89 +7,118 @@
              BackgroundColor="{DynamicResource PageBackgroundColor}"
              NavigationPage.HasNavigationBar="False"
              Title="CrearCuenta">
-    <StackLayout Margin="20,10,20,10"
-                 VerticalOptions="FillAndExpand">
-        <StackLayout VerticalOptions="Start"
-                     Opacity="0"
-                     x:Name="stackInicial">
-            <ImageButton Source="volver.png"
-                         BackgroundColor="Transparent"
-                         WidthRequest="30"
-                         HeightRequest="40"
-                         Margin="0,10,0,0"
-                         x:Name="btnVolver"
-                         Clicked="btnVolver_Clicked"
-                         HorizontalOptions="Start"/>
-            <Label Text="Crear Cuenta"
-                   VerticalOptions="Start"
-                   HorizontalOptions="Start"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   TextColor="White"
-                   Margin="0,20,0,0" />
-            <Label Text="Aqui podras crear una cuenta"
-                   VerticalOptions="Start"
-                   HorizontalOptions="Start"
-                   FontSize="20"
-                   FontAttributes="None"
-                   TextColor="White" />
+    <ScrollView>
+        <StackLayout Margin="20,10,20,10"
+                     VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="Start"
+                         Opacity="0"
+                         x:Name="stackInicial">
+                <ImageButton Source="volver.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="30"
+                             HeightRequest="40"
+                             Margin="0,10,0,0"
+                             x:Name="btnVolver"
+                             Clicked="btnVolver_Clicked"
+                             HorizontalOptions="Start" />
+                <Label Text="Crear Cuenta"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       Margin="0,20,0,0" />
+                <Label Text="Aqui podras crear una cuenta"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       FontSize="20"
+                       FontAttributes="None"
+                       TextColor="White" />
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Spacing="20"
+                         Opacity="0"
+                         x:Name="StackEmailPass">
+                <input:AdvancedEntry Title="Ingresa tu nombre completo"
+                                     VerticalOptions="CenterAndExpand"
+                                     BackgroundColor="Transparent"
+                                     Placeholder="Nombre y Apellido"
+                                     PlaceholderColor="LightGray"
+                                     IconImage="user.png"
+                                     TextColor="White"
+                                     x:Name="txtName">
+                    <input:AdvancedEntry.Validations>
+                        <validation:MinLengthValidation MinLength="6"
+                                                        Message="Nombre Incompleto" />
+                    </input:AdvancedEntry.Validations>
+                </input:AdvancedEntry>
+                <input:AdvancedEntry Title="Ingresa tu email"
+                                     VerticalOptions="CenterAndExpand"
+                                     BackgroundColor="Transparent"
+                                     Placeholder="ejemplo@dominio.com"
+                                     PlaceholderColor="LightGray"
+                                     IconImage="mail.png"
+                                     TextColor="White"
+                                     x:Name="txtEmail">
+                    <input:AdvancedEntry.Validations>
+                        <validation:RegexValidation Pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                                    Message="Correo invalido" />
+                    </input:AdvancedEntry.Validations>
+                </input:AdvancedEntry>
+                <input:AdvancedEntry Title="Ingresa tu clave"
+                                     VerticalOptions="CenterAndExpand"
+                                     BackgroundColor="Transparent"
+                                     IsPassword="True"
+                                     Placeholder="********"
+                                     PlaceholderColor="LightGray"
+                                     IconImage="pasword.png"
+                                     TextColor="White"
+                                     x:Name="txtPassword">
+                    <input:AdvancedEntry.Validations>
+                        <validation:RequiredValidation Message="Clave invalida" />
+                    </input:AdvancedEntry.Validations>
+                </input:AdvancedEntry>
+                <Border HeightRequest="2"
+                        BackgroundColor="LightGray"
+                        Opacity="0.5"
+                        Margin="0,20,0,0" />
+                <Button BackgroundColor="{DynamicResource PrimaryColor}"
+                        TextColor="White"
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        Margin="0,10,0,0"
+                        Text="Crear Cuenta"
+                        CornerRadius="10"
+                        x:Name="btnCrearCuenta"
+                        Clicked="btnCrearCuenta_Clicked"
+                        IsVisible="True"
+                        HeightRequest="50" />
+                <Frame BackgroundColor="{DynamicResource PrimaryColor}"
+                       Padding="0"
+                       Margin="0,10,0,0"
+                       CornerRadius="10"
+                       Grid.Row="0"
+                       HeightRequest="55"
+                       IsVisible="False"
+                       x:Name="animacionCargandoBoton">
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center"
+                                 Spacing="10">
+                        <ActivityIndicator IsRunning="True"
+                                           Margin="0,15,0,15"
+                                           VerticalOptions="Center" />
+                        <Label Text="Crear Cuenta"
+                               TextColor="White"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
         </StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand"
-                     HorizontalOptions="FillAndExpand"
-                     Spacing="20"
-                     Opacity="0"
-                     x:Name="StackEmailPass">
-            <input:AdvancedEntry Title="Ingresa tu nombre completo"
-                                 VerticalOptions="CenterAndExpand"
-                                 BackgroundColor="Transparent"
-                                 Placeholder="Nombre y Apellido"
-                                 PlaceholderColor="LightGray"
-                                 IconImage="user.png"
-                                 TextColor="White"
-                                 x:Name="txtName">
-                <input:AdvancedEntry.Validations>
-                    <validation:MinLengthValidation MinLength="6" Message="Nombre Incompleto" />
-                </input:AdvancedEntry.Validations>
-            </input:AdvancedEntry>
-            <input:AdvancedEntry Title="Ingresa tu email"
-                                 VerticalOptions="CenterAndExpand"
-                                 BackgroundColor="Transparent"
-                                 Placeholder="ejemplo@dominio.com"
-                                 PlaceholderColor="LightGray"
-                                 IconImage="mail.png"
-                                 TextColor="White"
-                                 x:Name="txtEmail">
-                <input:AdvancedEntry.Validations>
-                    <validation:RegexValidation Pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                                                Message="Correo invalido" />
-                </input:AdvancedEntry.Validations>
-            </input:AdvancedEntry>
-            <input:AdvancedEntry Title="Ingresa tu clave"
-                                 VerticalOptions="CenterAndExpand"
-                                 BackgroundColor="Transparent"
-                                 IsPassword="True"
-                                 Placeholder="********"
-                                 PlaceholderColor="LightGray"
-                                 IconImage="pasword.png"
-                                 TextColor="White"
-                                 x:Name="txtPassword">
-                <input:AdvancedEntry.Validations>
-                    <validation:RequiredValidation Message="Clave invalida" />
-                </input:AdvancedEntry.Validations>
-            </input:AdvancedEntry>
-            <Border HeightRequest="2"
-                    BackgroundColor="LightGray"
-                    Opacity="0.5"
-                    Margin="0,20,0,0" />
-            <Button BackgroundColor="{DynamicResource PrimaryColor}"
-                    TextColor="White"
-                    FontSize="15"
-                    FontAttributes="Bold"
-                    Margin="0,10,0,0"
-                    Text="Crear Cuenta"
-                    CornerRadius="10"
-                    x:Name="btnCrearCuenta"
-                    Clicked="btnCrearCuenta_Clicked"/>
-        </StackLayout>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinanzApp.Views.Login.Views.CuentaCreadaMensaje"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             xmlns:animation="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             Title="CuentaCreadaMensaje">
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand">
+        <StackLayout  HorizontalOptions="CenterAndExpand"
+                      VerticalOptions="CenterAndExpand">
+            <animation:SKLottieView Grid.Row="0"
+                                    RepeatCount="-1"
+                                    RepeatMode="Restart"
+                                    Source="correcto.json"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="200"
+                                    WidthRequest="200" />
+            <Label Text="Cuenta creada correctamente"
+                   HorizontalOptions="Center"
+                   FontSize="17"
+                   FontAttributes="Bold"
+                   TextColor="White" />
+        </StackLayout>
+        <Button BackgroundColor="{DynamicResource PrimaryColor}"
+                TextColor="White"
+                Text="Ir a inicio"
+                FontSize="17"
+                CornerRadius="18"
+                WidthRequest="130"
+                HeightRequest="50"
+                FontAttributes="Bold"
+                VerticalOptions="End"
+                Margin="0,0,0,20" 
+                x:Name="btnContinuar"
+                Clicked="btnContinuar_Clicked"/>
+    </StackLayout>
+</ContentPage>

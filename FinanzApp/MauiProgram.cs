@@ -1,4 +1,5 @@
-﻿using InputKit.Handlers;
+﻿using CommunityToolkit.Maui;
+using InputKit.Handlers;
 using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
@@ -11,6 +12,7 @@ namespace FinanzApp
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
+				.UseMauiCommunityToolkit()
 				.ConfigureMauiHandlers(handler =>
 				{
 					handler.AddInputKitHandlers();
