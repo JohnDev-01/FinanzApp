@@ -1,4 +1,6 @@
+using CommunityToolkit.Maui.Alerts;
 using FinanzApp.Views.Login.ViewModels;
+using FinanzApp.Views.Menu.Views;
 using System.Xml.Linq;
 
 namespace FinanzApp.Views.Login.Views;
@@ -30,9 +32,13 @@ public partial class Login : ContentPage
 	{
 
 	}
-	private async Task<bool> SignIn()
+	private async Task SignIn()
 	{
-		return await VMuser.LoginWithCredential(txtEmail.Text, txtPassword.Text);
+		var isSign =  await VMuser.LoginWithCredential(txtEmail.Text, txtPassword.Text);
+		if (isSign)
+		{
+			Application.Current.MainPage = new NavigationPage(new Contenedor());
+		}
 	}
 	private async Task<bool> ValidarCamposVacios()
 	{
@@ -40,7 +46,8 @@ public partial class Login : ContentPage
 		{
 			if (txtPassword.Text.Length < 6)
 			{
-				await DisplayAlert("Completa:", "Digita una contraseña valida", "OK");
+				 await Toast.Make("Digita una contraseña valida")
+					.Show();	
 				return false;
 			}
 			else
@@ -56,10 +63,16 @@ public partial class Login : ContentPage
 	}
 	private async void btnIniciar_Clicked(object sender, EventArgs e)
 	{
+		btnIniciar.IsVisible = false;
+		animacionCargandoBoton.IsVisible = true;
+
 		if (await ValidarCamposVacios() == true)
 		{
-			var isLogin = await SignIn();
-			await DisplayAlert("Login:", isLogin.ToString(), "OK"); 
+			 await SignIn();
+			
+
 		}
+		btnIniciar.IsVisible = true;
+		animacionCargandoBoton.IsVisible = false;
 	}
 }

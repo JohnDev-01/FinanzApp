@@ -1,4 +1,5 @@
 ﻿using FinanzApp.Views.Login.Model;
+using Firebase.Auth;
 using Plugin.CloudFirestore;
 using System;
 using System.Collections.Generic;
@@ -32,14 +33,16 @@ namespace FinanzApp.Views.Login.ViewModels
 		{
 			try
 			{
-				await CrossCloudFirestore.Current
+				var iduser  = await CrossCloudFirestore.Current
 					.Instance
 					.Collection("Users")
 					.AddAsync(muser);
+				//Preferences.Set("Iduser", iduser.Firestore.Document);
 				return true;
 			}
-			catch (Exception)
+			catch (Exception ex )
 			{
+				var message  = ex.Message;
 				return false;
 			}
 		}

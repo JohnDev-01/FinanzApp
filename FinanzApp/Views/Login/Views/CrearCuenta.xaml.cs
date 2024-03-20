@@ -41,6 +41,7 @@ public partial class CrearCuenta : ContentPage
 				Name = txtName.Text,
 				UIDusuario = Iduser
 			});
+			await Navigation.PushAsync(new CuentaCreadaMensaje());
 		}
 		catch (Exception ex)
 		{
@@ -68,10 +69,13 @@ public partial class CrearCuenta : ContentPage
 	}
 	private async void btnCrearCuenta_Clicked(object sender, EventArgs e)
 	{
+		btnCrearCuenta.IsVisible = false;
+		animacionCargandoBoton.IsVisible = true;
 		if (await ValidarCamposVacios() == true)
 		{
 			await CreateAccount();
 		}
-		
+		btnCrearCuenta.IsVisible = true;
+		animacionCargandoBoton.IsVisible = false;
 	}
 }
