@@ -1,5 +1,7 @@
-﻿using FinanzApp.Views.Login.Model;
+﻿using FinanzApp.Service;
+using FinanzApp.Views.Login.Model;
 using Firebase.Auth;
+using Firebase.Database.Query;
 using Plugin.CloudFirestore;
 using System;
 using System.Collections.Generic;
@@ -20,9 +22,9 @@ namespace FinanzApp.Views.Login.ViewModels
 
 				var userCredential = await clientAuth.CreateUserWithEmailAndPasswordAsync(muser.Email, muser.Password);
 				Preferences.Set("TokenAuth", await userCredential.User.GetIdTokenAsync());
-				var iduser  = userCredential.User.Uid;
-			
-				return iduser; 
+				var iduser = userCredential.User.Uid;
+
+				return iduser;
 			}
 			catch (Exception ex)
 			{
@@ -33,16 +35,19 @@ namespace FinanzApp.Views.Login.ViewModels
 		{
 			try
 			{
-				var iduser  = await CrossCloudFirestore.Current
-					.Instance
-					.Collection("Users")
-					.AddAsync(muser);
-				//Preferences.Set("Iduser", iduser.Firestore.Document);
+				//var iduser = await CrossCloudFirestore.Current
+				//	.Instance
+				//	.Collection("Users")
+				//	.AddAsync(muser);
+				var iduser = (await Conection.firebase
+					.Child("Users")
+					.PostAsync(muser)).Key;
+				Preferences.Set("Iduser", iduser);
 				return true;
 			}
-			catch (Exception ex )
+			catch (Exception ex)
 			{
-				var message  = ex.Message;
+				var message = ex.Message;
 				return false;
 			}
 		}
