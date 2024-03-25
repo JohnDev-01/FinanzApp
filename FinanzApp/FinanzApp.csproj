@@ -65,6 +65,7 @@
 	  <None Remove="Platforms\Android\google-services.json" />
 	  <None Remove="Platforms\iOS\GoogleService-Info.plist" />
 	  <None Remove="Resources\Images\category.png" />
+	  <None Remove="Resources\Images\delete.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\icon1.png" />
 	  <None Remove="Resources\Images\icon2.png" />

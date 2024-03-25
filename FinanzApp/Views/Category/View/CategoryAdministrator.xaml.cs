@@ -22,4 +22,24 @@ public partial class CategoryAdministrator : ContentPage
 		var listCategory = await VMcategory.GetListCategoryFromIdUser();
 		collectionCategory.ItemsSource = listCategory;
 	}
+
+	private void tappedGesture_Tapped(object sender, TappedEventArgs e)
+	{
+
+	}
+
+	private async void btnDeleteCategory_Clicked(object sender, EventArgs e)
+	{
+		try
+		{
+			string key = ((ImageButton)sender).AutomationId;
+			await VMcategory.DeleteCategory(key);
+			await LoadCategory();
+
+		}
+		catch (Exception )
+		{
+
+		}
+	}
 }

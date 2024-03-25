@@ -7,6 +7,7 @@
         <ResourceDictionary>
             <Color x:Key="PrimaryColor">#BF7BFF</Color>
             <Color x:Key="PageBackgroundColor">#060619</Color>
+            <Color x:Key="TercerBackColor">#251A3F</Color>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />

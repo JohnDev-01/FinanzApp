@@ -18,6 +18,7 @@ namespace FinanzApp.Views.Category.ViewModel
 			{
 				await Conection.firebase
 					.Child("Category")
+					.Child(model.Iduser)
 					.PostAsync(model);
 
 			}
@@ -34,8 +35,9 @@ namespace FinanzApp.Views.Category.ViewModel
 				var iduser = VMuser.GetIduserLogin();
 				var listCategory = (await Conection.firebase
 					.Child("Category")
+					.Child(iduser)
 					.OrderByKey()
-					.OnceAsync<Mcategory>()).Where(a => a.Object.Iduser == iduser);
+					.OnceAsync<Mcategory>()).Where(a=> a.Object.EnableView == true);
 				foreach (var item in listCategory)
 				{
 					var model = item.Object;
@@ -49,6 +51,31 @@ namespace FinanzApp.Views.Category.ViewModel
             }
 			return listReturn;
 
+		}
+		public static async Task DeleteCategory(string key)
+		{
+			try
+			{
+				var iduser = VMuser.GetIduserLogin();
+
+				var categoryModel = (await Conection.firebase
+					.Child("Category")
+					.Child(iduser)
+					.Child(key)
+					.OnceAsync<Mcategory>()).FirstOrDefault();
+
+				categoryModel.Object.EnableView = false;
+
+				await Conection.firebase
+					.Child("Category")
+					.Child(iduser)
+					.Child(key)
+					.PutAsync(categoryModel.Object);
+			}
+			catch (Exception ex)
+			{
+				await Console.Out.WriteLineAsync(ex.Message + ". In VMcategory.InsertCategory");
+			}
 		}
 	}
 }
