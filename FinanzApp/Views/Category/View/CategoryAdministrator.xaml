@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:animation="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="FinanzApp.Views.Category.View.CategoryAdministrator"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="Start"
+                     HorizontalOptions="FillAndExpand"
+                     Margin="10,10,0,0"
+                     Orientation="Horizontal">
+            <StackLayout>
+                <Label Text="Categorias"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"
+                       FontAttributes="Bold"
+                       FontSize="22"
+                       TextColor="White" />
+                <Label Text="Visualiza aqui tus categorias"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"
+                       FontAttributes="None"
+                       FontSize="15"
+                       TextColor="White" />
+            </StackLayout>
+            <Grid RowDefinitions="*"
+                  HorizontalOptions="EndAndExpand"
+                         WidthRequest="50"
+                         HeightRequest="50"
+                         BackgroundColor="Transparent">
+                <Frame BackgroundColor="White"
+                       CornerRadius="20"
+                       WidthRequest="40"
+                       HeightRequest="40"
+                       Margin="0"
+                       Padding="0">
+                    <Label Text="JS"
+                           TextColor="{DynamicResource PrimaryColor}"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+                
+            </Grid>
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     x:Name="stackAlert">
+            <Label Text="Aún no haz agregado ningúna categoria."
+                   TextColor="White"
+                   FontSize="17"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"/>
+            <animation:SKLottieView Grid.Row="0"
+                                    RepeatCount="-1"
+                                    RepeatMode="Restart"
+                                    Source="triste.json"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="100"
+                                    WidthRequest="100"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand" />
+            
+        </StackLayout>
+        <CollectionView x:Name="collectionCategory">
+            
+        </CollectionView>
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="End">
+            <Button BackgroundColor="{DynamicResource PrimaryColor}"
+                    Text="Crear nueva categoria"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Margin="8,0,8,8"
+                    CornerRadius="20"
+                    x:Name="btnNewCategory"
+                    Clicked="btnNewCategory_Clicked"
+                    />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

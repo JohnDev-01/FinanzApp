@@ -8,8 +8,10 @@ namespace FinanzApp.Views.Category.Model
 {
 	public class Mcategory
 	{
-		public int Key { get; set; }
+		public string Key { get; set; }
+		public string Iduser { get; set; }
 		public string Name { get; set; }
 		public string Icon { get; set; }
-	}
+        public bool EnableView { get; set; }
+    }
 }

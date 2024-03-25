@@ -35,10 +35,6 @@ namespace FinanzApp.Views.Login.ViewModels
 		{
 			try
 			{
-				//var iduser = await CrossCloudFirestore.Current
-				//	.Instance
-				//	.Collection("Users")
-				//	.AddAsync(muser);
 				var iduser = (await Conection.firebase
 					.Child("Users")
 					.PostAsync(muser)).Key;
@@ -57,12 +53,18 @@ namespace FinanzApp.Views.Login.ViewModels
 			{
 				var clientAuth = AuthenticationCredential.authClient;
 				var response = await clientAuth.SignInWithEmailAndPasswordAsync(Email, Password);
+				Preferences.Set("Iduser", response.User.Uid);
+
 				return true;
 			}
 			catch (Exception ex)
 			{
 				return false;
 			}
+		}
+		public static string GetIduserLogin()
+		{
+			return Preferences.Get("Iduser", "NOT FOUND");
 		}
 	}
 }

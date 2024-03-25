@@ -15,6 +15,6 @@ public partial class CuentaCreadaMensaje : ContentPage
 
 	private void btnContinuar_Clicked(object sender, EventArgs e)
 	{
-		Application.Current.MainPage = new NavigationPage(new Contenedor());
+		Application.Current.MainPage = new NavigationPage(new Container());
 	}
 }

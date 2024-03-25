@@ -1,8 +1,9 @@
+
 namespace FinanzApp.Views.Menu.Views;
 
-public partial class Contenedor : ContentPage
+public partial class Container : TabbedPage
 {
-	public Contenedor()
+	public Container()
 	{
 		InitializeComponent();
 	}

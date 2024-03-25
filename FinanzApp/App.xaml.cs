@@ -1,4 +1,5 @@
-﻿using FinanzApp.Views.Login.Views;
+﻿using FinanzApp.Views.Category.View;
+using FinanzApp.Views.Login.Views;
 
 namespace FinanzApp
 {
@@ -8,6 +9,7 @@ namespace FinanzApp
 		{
 			InitializeComponent();
 			MainPage = new SplashScreen();
+			//MainPage = new NavigationPage(new CategoryAdministrator());
 		}
 	}
 }

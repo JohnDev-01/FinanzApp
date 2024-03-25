@@ -37,7 +37,7 @@ public partial class Login : ContentPage
 		var isSign =  await VMuser.LoginWithCredential(txtEmail.Text, txtPassword.Text);
 		if (isSign)
 		{
-			Application.Current.MainPage = new NavigationPage(new Contenedor());
+			Application.Current.MainPage = new NavigationPage(new Container());
 		}
 	}
 	private async Task<bool> ValidarCamposVacios()
