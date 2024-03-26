@@ -61,8 +61,9 @@ namespace FinanzApp.Views.Category.ViewModel
 				var categoryModel = (await Conection.firebase
 					.Child("Category")
 					.Child(iduser)
-					.Child(key)
-					.OnceAsync<Mcategory>()).FirstOrDefault();
+					.OnceAsync<Mcategory>())
+					.Where(a => a.Key == key)
+					.FirstOrDefault();
 
 				categoryModel.Object.EnableView = false;
 

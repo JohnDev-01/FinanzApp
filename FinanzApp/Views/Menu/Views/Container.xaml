@@ -11,11 +11,14 @@
             BarBackgroundColor="#261A40"
             BarTextColor="White"
             UnselectedTabColor="White"
-            SelectedTabColor="{DynamicResource PrimaryColor}">
+            SelectedTabColor="{DynamicResource PrimaryColor}"
+            NavigationPage.HasNavigationBar="False"
+            >
     <home:Home Title="Inicio"
-               IconImageSource="home.png" />
+               IconImageSource="home.svg" />
     <transaction:Transaction Title="Transacciones"
-                             IconImageSource="transaction.png" />
+                             IconImageSource="transaction.svg" />
     <category:CategoryAdministrator Title="Categorias"
-                                    IconImageSource="category.png" />
+                                    IconImageSource="category.svg" 
+                                   />
 </TabbedPage>

@@ -30,14 +30,16 @@
                   WidthRequest="50"
                   HeightRequest="50"
                   BackgroundColor="Transparent">
-                <Frame BackgroundColor="White"
+                <Frame BackgroundColor="Transparent"
                        CornerRadius="20"
                        WidthRequest="40"
                        HeightRequest="40"
                        Margin="0"
-                       Padding="0">
-                    <Label Text="JS"
-                           TextColor="{DynamicResource PrimaryColor}"
+                       Padding="0"
+                       x:Name="FondoIcon">
+                    <Label Text=""
+                           x:Name="textIcon"
+                           TextColor="White"
                            FontSize="18"
                            FontAttributes="Bold"
                            HorizontalOptions="Center"
@@ -70,7 +72,8 @@
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
                                  Span="2"
-                                 HorizontalItemSpacing="10"/>
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="10"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>

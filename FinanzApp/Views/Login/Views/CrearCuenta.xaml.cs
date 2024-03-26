@@ -35,17 +35,39 @@ public partial class CrearCuenta : ContentPage
 				return;
 			}
 
+			var color = GetRandomColor();
 			await VMuser.CreateUserTable(new Muser()
 			{
 				Email = txtEmail.Text,
 				Name = txtName.Text,
-				UIDusuario = Iduser
+				UIDusuario = Iduser,
+				Color = color
 			});
 			await Navigation.PushAsync(new CuentaCreadaMensaje());
 		}
 		catch (Exception ex)
 		{
 		}
+	}
+	public static string GetRandomColor()
+	{
+		string[] colors = {
+			"#001F3F", // Azul oscuro
+            "#2ECC71", // Verde esmeralda
+            "#9B59B6", // Púrpura
+            "#8B0000", // Rojo oscuro
+            "#FFA500", // Naranja
+            "#4B0082", // Azul índigo
+            "#BDC3C7", // Gris acero
+            "#1ABC9C", // Verde azulado
+            "#FFFF00", // Amarillo
+            "#FF00FF"  // Magenta
+        };
+		var random = new Random();
+		int index = random.Next(colors.Length);
+
+		
+		return colors[index];
 	}
 	private async Task<bool> ValidarCamposVacios()
 	{

@@ -66,5 +66,67 @@ namespace FinanzApp.Views.Login.ViewModels
 		{
 			return Preferences.Get("Iduser", "NOT FOUND");
 		}
+		public static async Task<Muser> GetMuser(string Iduser)
+		{
+			try
+			{
+				var userModel = (await Conection.firebase
+					.Child("Users")
+					.OrderByKey()
+					.OnceAsync<Muser>())
+					.Where(a => a.Object.UIDusuario == Iduser)
+					.FirstOrDefault();
+
+				return userModel.Object;
+
+			}
+			catch (Exception ex)
+			{
+				return null;
+			}
+
+		}
+		private static Color HexToColor(string hexColor)
+		{
+			hexColor = hexColor.Replace("#", ""); // Elimina el carácter '#' si está presente
+
+			byte red = Convert.ToByte(hexColor.Substring(0, 2), 16);
+			byte green = Convert.ToByte(hexColor.Substring(2, 2), 16);
+			byte blue = Convert.ToByte(hexColor.Substring(4, 2), 16);
+
+			return new Color(red / 255f, green / 255f, blue / 255f);
+		}
+		public static async Task<Minitials> IconDrawing()
+		{
+			//Get UID 
+			var idUser = GetIduserLogin();
+			//Get User Model
+			var userModel = await GetMuser(idUser);
+
+
+			//Process information from client
+			var partesNombre = userModel.Name.Split(' ');
+			string initials = "";
+			try
+			{
+				for (int i = 0; i < partesNombre.Length && i < 2; i++)
+				{
+					initials += partesNombre[i][0];
+				}
+				initials = initials.ToUpper();
+			}
+			catch (Exception)
+			{
+
+			}
+
+
+			var modelInitials = new Minitials()
+			{
+				BackgroundColor = HexToColor(userModel.Color),
+				Initials = initials
+			};
+			return modelInitials;
+		}
 	}
 }
