@@ -64,13 +64,24 @@
 	<ItemGroup>
 	  <None Remove="Platforms\Android\google-services.json" />
 	  <None Remove="Platforms\iOS\GoogleService-Info.plist" />
+	  <None Remove="Resources\Images\category.png" />
+	  <None Remove="Resources\Images\delete.png" />
+	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\icon1.png" />
+	  <None Remove="Resources\Images\icon2.png" />
+	  <None Remove="Resources\Images\icon3.png" />
+	  <None Remove="Resources\Images\icon4.png" />
+	  <None Remove="Resources\Images\icon5.png" />
+	  <None Remove="Resources\Images\icon6.png" />
 	  <None Remove="Resources\Images\icono.png" />
 	  <None Remove="Resources\Images\mail.png" />
 	  <None Remove="Resources\Images\pasword.png" />
+	  <None Remove="Resources\Images\transaction.png" />
 	  <None Remove="Resources\Images\user.png" />
 	  <None Remove="Resources\Images\volver.png" />
 	  <None Remove="Resources\Raw\correcto.json" />
 	  <None Remove="Resources\raw\splashScreen.json" />
+	  <None Remove="Resources\Raw\triste.json" />
 		
 	</ItemGroup>
 
@@ -98,9 +109,18 @@
 	  <Compile Update="Views\Login\Views\CrearCuenta.xaml.cs">
 	    <DependentUpon>CrearCuenta.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Menu\Views\Container.xaml.cs">
+	    <DependentUpon>Container.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\Category\View\CategoryAdministrator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Category\View\Newcategory.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Login\Views\CuentaCreadaMensaje.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -113,7 +133,13 @@
 	  <MauiXaml Update="Views\Login\Views\SplashScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Menu\Views\Contenedor.xaml">
+	  <MauiXaml Update="Views\Menu\Views\Container.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Menu\Views\Home.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Transactions\View\Transaction.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

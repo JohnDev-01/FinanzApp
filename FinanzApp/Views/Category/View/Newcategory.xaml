@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinanzApp.Views.Category.View.Newcategory"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+             xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <ScrollView>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="Start"
+                         Margin="5,15,0,0">
+                <ImageButton Source="volver.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             x:Name="btnBack"
+                             Clicked="btnBack_Clicked"/>
+                <Label Text="Agrega una categoria"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       FontSize="17"
+                       VerticalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       Margin="5,0,0,0" />
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <input:AdvancedEntry Title="Ingresa tu clave"
+                                     VerticalOptions="Start"
+                                     BackgroundColor="Transparent"
+                                     Placeholder="Escribe el nombre de tu categoria aqui..."
+                                     PlaceholderColor="LightGray"
+                                     TextColor="White"
+                                     Margin="15,0,15,0"
+                                     x:Name="txtNombreCategoria">
+                    <input:AdvancedEntry.Validations>
+                        <validation:MinLengthValidation MinLength="0" 
+                                                        Message="Nombre invalido" />
+                    </input:AdvancedEntry.Validations>
+                </input:AdvancedEntry>
+                <Label Text="Iconos disponibles"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       FontSize="15"
+                       
+                       VerticalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       Margin="15,15,0,0" />
+                <CollectionView x:Name="collectionIcon">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                          Span="3" 
+                                         />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="5,10,5,10"
+                                   BackgroundColor="{Binding Color}"
+                                   Padding="2"
+                                   CornerRadius="40"
+                                   HeightRequest="100"
+                                   BorderColor="Transparent"
+                                   WidthRequest="100">
+                                <Frame VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand"
+                                       CornerRadius="40"
+                                       BackgroundColor="#191231"
+                                       BorderColor="Transparent"
+                                       AutomationId="{Binding Source}">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tappedGesture"
+                                                              Tapped="tappedGesture_Tapped"/>
+                                    </Frame.GestureRecognizers>
+                                    <Image Source="{Binding Source}"
+                                           />
+                                </Frame>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button VerticalOptions="EndAndExpand"
+                        HeightRequest="45"
+                        Text="Guardar"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="{DynamicResource PrimaryColor}"
+                        FontSize="16"
+                        Margin="5,0,5,10"
+                        x:Name="btnGuardar"
+                        Clicked="btnGuardar_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

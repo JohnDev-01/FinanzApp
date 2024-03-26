@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:animation="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="FinanzApp.Views.Category.View.CategoryAdministrator"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="Start"
+                     HorizontalOptions="FillAndExpand"
+                     Margin="10,10,0,0"
+                     Orientation="Horizontal">
+            <StackLayout>
+                <Label Text="Categorias"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"
+                       FontAttributes="Bold"
+                       FontSize="22"
+                       TextColor="White" />
+                <Label Text="Visualiza aqui tus categorias"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"
+                       FontAttributes="None"
+                       FontSize="15"
+                       TextColor="White" />
+            </StackLayout>
+            <Grid RowDefinitions="*"
+                  HorizontalOptions="EndAndExpand"
+                  WidthRequest="50"
+                  HeightRequest="50"
+                  BackgroundColor="Transparent">
+                <Frame BackgroundColor="Transparent"
+                       CornerRadius="20"
+                       WidthRequest="40"
+                       HeightRequest="40"
+                       Margin="0"
+                       Padding="0"
+                       x:Name="FondoIcon">
+                    <Label Text=""
+                           x:Name="textIcon"
+                           TextColor="White"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Frame>
+            </Grid>
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     x:Name="stackAlert"
+                     IsVisible="False">
+            <Label Text="Aún no haz agregado ningúna categoria."
+                   TextColor="White"
+                   FontSize="17"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center" />
+            <animation:SKLottieView Grid.Row="0"
+                                    RepeatCount="-1"
+                                    RepeatMode="Restart"
+                                    Source="triste.json"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="100"
+                                    WidthRequest="100"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+        <CollectionView x:Name="collectionCategory"
+                        VerticalOptions="FillAndExpand"
+                        Margin="10,30,10,0">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5,10,5,10"
+                           BackgroundColor="{DynamicResource TercerBackColor}"
+                           Padding="2"
+                           CornerRadius="30"
+                           HeightRequest="150"
+                           BorderColor="Transparent"
+                           WidthRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tappedGesture"
+                                                  Tapped="tappedGesture_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand">
+                            <ImageButton Source="delete.png"
+                                         WidthRequest="20"
+                                         VerticalOptions="StartAndExpand"
+                                         HorizontalOptions="EndAndExpand"
+                                         Margin="0,5,10,0"
+                                         HeightRequest="30"
+                                         AutomationId="{Binding Key}"
+                                         x:Name="btnDeleteCategory"
+                                         Clicked="btnDeleteCategory_Clicked"/>
+                            <Image Source="{Binding Icon}"
+                                   VerticalOptions="Center"
+                                   HeightRequest="60" />
+                            <Label TextColor="White"
+                                   FontAttributes="Bold"
+                                   FontSize="16"
+                                   HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="EndAndExpand"
+                                   Text="{Binding Name}" 
+                                   Margin="0,0,0,5"/>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="End">
+            <Button BackgroundColor="{DynamicResource PrimaryColor}"
+                    Text="Crear nueva categoria"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Margin="8,0,8,18"
+                    CornerRadius="20"
+                    x:Name="btnNewCategory"
+                    Clicked="btnNewCategory_Clicked" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

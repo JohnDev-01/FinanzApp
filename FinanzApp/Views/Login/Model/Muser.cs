@@ -12,5 +12,6 @@ namespace FinanzApp.Views.Login.Model
         public string Key{ get; set; }
         public string Email{ get; set; }
         public string Name{ get; set; }
+        public string Color{ get; set; }
     }
 }
