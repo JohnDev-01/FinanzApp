@@ -15,10 +15,10 @@
             NavigationPage.HasNavigationBar="False"
             >
     <home:Home Title="Inicio"
-               IconImageSource="home.svg" />
+               IconImageSource="home.png" />
     <transaction:Transaction Title="Transacciones"
-                             IconImageSource="transaction.svg" />
+                             IconImageSource="transaction.png" />
     <category:CategoryAdministrator Title="Categorias"
-                                    IconImageSource="category.svg" 
+                                    IconImageSource="category.png" 
                                    />
 </TabbedPage>
