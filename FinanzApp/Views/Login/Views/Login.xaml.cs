@@ -28,10 +28,16 @@ public partial class Login : ContentPage
 		await Navigation.PushAsync(new CrearCuenta());
 	}
 
-	private void lblRecuperarClave_Tapped(object sender, TappedEventArgs e)
+	private async void lblRecuperarClave_Tapped(object sender, TappedEventArgs e)
 	{
+		string email = await DisplayPromptAsync("Recuperar cuenta:", "Digita tu correo",  keyboard: Keyboard.Email, placeholder: "correo@correo.com");
+		if (email != null)
+		{
+			await VMuser.SendEmailRecuperation(email);
 
+		}
 	}
+	
 	private async Task SignIn()
 	{
 		var isSign =  await VMuser.LoginWithCredential(txtEmail.Text, txtPassword.Text);

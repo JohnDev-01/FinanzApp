@@ -128,5 +128,18 @@ namespace FinanzApp.Views.Login.ViewModels
 			};
 			return modelInitials;
 		}
+		public static async Task SendEmailRecuperation(string email)
+		{
+			try
+			{
+				var clientAuth = AuthenticationCredential.authClient;
+				await clientAuth.ResetEmailPasswordAsync(email);
+				await Application.Current.MainPage.DisplayAlert("FinanzApp:", "Se ha enviado un correo que contiene toda la información necesaria para recuperar el acceso a tu cuenta", "OK");
+			}
+			catch (Exception ex)
+			{
+				await Application.Current.MainPage.DisplayAlert("Ups...", "Ha ocurrido un error al enviar el correo de recuperacion", "OK");
+			}
+		}
 	}
 }
