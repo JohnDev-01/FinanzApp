@@ -4,10 +4,151 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{DynamicResource PageBackgroundColor}"
              x:Class="FinanzApp.Views.Menu.Views.Home">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout>
+        <StackLayout x:Name="stackEncabezado"
+                     VerticalOptions="Start"
+                     Orientation="Horizontal"
+                     Margin="5,0,5,0">
+            <Label Text="Mi cuenta"
+                   TextColor="White"
+                   FontSize="17"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center" />
+            <Grid RowDefinitions="*"
+                  HorizontalOptions="EndAndExpand"
+                  WidthRequest="50"
+                  HeightRequest="50"
+                  BackgroundColor="Transparent">
+                <Frame BackgroundColor="Transparent"
+                       CornerRadius="20"
+                       WidthRequest="40"
+                       HeightRequest="40"
+                       Margin="0"
+                       Padding="0"
+                       x:Name="FondoIcon">
+                    <Label Text=""
+                           x:Name="textIcon"
+                           TextColor="White"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Frame>
+            </Grid>
+        </StackLayout>
+        <Frame BackgroundColor="{DynamicResource PrimaryColor}"
+               CornerRadius="20"
+               HeightRequest="140"
+               Margin="5"
+               BorderColor="Transparent"
+               Padding="0">
+            <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         >
+                <StackLayout.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="{DynamicResource PrimaryColor}"
+                                      Offset="0.0" />
+                        <GradientStop Color="#3F2954"
+                                      Offset="1.0" />
+                    </LinearGradientBrush>
+                </StackLayout.Background>
+                <StackLayout VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="Start"
+                             Margin="20,0,0,0"
+                             >
+                    <Label Text="Mi dinero"
+                           FontAttributes="Bold"
+                           FontSize="17"
+                           TextColor="WhiteSmoke"
+                           HorizontalOptions="Start"
+                           VerticalOptions="CenterAndExpand"
+                           VerticalTextAlignment="Center" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="RD$"
+                               FontAttributes="Bold"
+                               FontSize="11"
+                               TextColor="White"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Start"
+                               Margin="0,5,0,0"
+                               VerticalTextAlignment="Center" />
+                        <Label Text="0.00"
+                           FontAttributes="Bold"
+                           FontSize="25"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center" />
+                    </StackLayout>
+                    
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+        <StackLayout x:Name="stackButton"
+                     Orientation="Horizontal" 
+                     BackgroundColor="Transparent"
+                     Margin="5,10,0,0"
+                     HeightRequest="120">
+            
+            <Grid VerticalOptions="FillAndExpand"
+                  RowDefinitions="80,50"
+                  BackgroundColor="Transparent">
+                <Frame Grid.Row="0"
+                       BackgroundColor="White"
+                       Padding="0"
+                       WidthRequest="50"
+                       CornerRadius="15">
+                    <Label Text="+"
+                           FontSize="26"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontAttributes="Bold" />
+                </Frame>
+                <Label Grid.Row="1"
+                       Text="Depositar"
+                       TextColor="White"
+                       FontSize="13"
+                       FontAttributes="Bold"/>
+            </Grid>
+            <Grid VerticalOptions="FillAndExpand"
+                  RowDefinitions="80,50"
+                  WidthRequest="55"
+                  Margin="10,0,0,0"
+                  BackgroundColor="Transparent">
+                <Frame Grid.Row="0"
+                       BackgroundColor="White"
+                       Padding="0"
+                       WidthRequest="50"
+                       CornerRadius="15">
+                    <Label Text="-"
+                           FontSize="26"
+                           TextColor="Black"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontAttributes="Bold" />
+                </Frame>
+                <Label Grid.Row="1"
+                       Text="Retirar"
+                       TextColor="White"
+                       FontSize="13"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold" />
+            </Grid>
+        </StackLayout>
+        <StackLayout Margin="5,0,5,0">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Mis ultimas 5 transacciones"
+                       TextColor="White"
+                       FontAttributes="Bold" />
+                <Label Text="Ver todas"
+                       TextColor="White" 
+                       HorizontalOptions="EndAndExpand"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </StackLayout>
 </ContentPage>
