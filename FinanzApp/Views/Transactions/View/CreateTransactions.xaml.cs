@@ -5,20 +5,26 @@ namespace FinanzApp.Views.Transactions.View;
 
 public partial class CreateTransactions : ContentPage
 {
-	public CreateTransactions(string type)
+	public CreateTransactions(string type, double amountAvailable)
 	{
 		InitializeComponent();
-		ConfigDebitOrCredit(type);
+		_amountAvailable = amountAvailable;
+		ConfigDebitOrCredit(type, amountAvailable);
 	}
 
 	string number = "";
-
+	double _amountAvailable; 
 	protected override async void OnAppearing()
 	{
 		await LoadCategory();
 	}
-    private void ConfigDebitOrCredit(string type)
+    private void ConfigDebitOrCredit(string type, double amountAvailable)
 	{
+		//Config text amount available 
+		lblAmountAvailable.Text = "Tu balance disponible: " + amountAvailable.ToString("C");
+
+
+		//Config title and color of lblamount 
 		if (type == "Credit")
 		{
 			lblTitle.Text =  "Depositar";

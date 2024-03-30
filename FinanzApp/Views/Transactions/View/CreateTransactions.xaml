@@ -113,7 +113,8 @@
                                HorizontalOptions="Center"
                                FontAttributes="None"
                                TextColor="White"
-                               Margin="15,15,15,5" />
+                               Margin="15,15,15,5"
+                               x:Name="lblAmountAvailable"/>
                     </StackLayout>
                     <StackLayout  Margin="15,15,15,5">
                          <Label Text="Notas"
