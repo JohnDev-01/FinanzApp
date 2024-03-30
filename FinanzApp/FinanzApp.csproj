@@ -64,6 +64,7 @@
 	<ItemGroup>
 	  <None Remove="Platforms\Android\google-services.json" />
 	  <None Remove="Platforms\iOS\GoogleService-Info.plist" />
+	  <None Remove="Resources\Images\back.png" />
 	  <None Remove="Resources\Images\category.png" />
 	  <None Remove="Resources\Images\delete.png" />
 	  <None Remove="Resources\Images\home.png" />
@@ -137,6 +138,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Menu\Views\Home.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Transactions\View\CreateTransactions.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Transactions\View\Transaction.xaml">

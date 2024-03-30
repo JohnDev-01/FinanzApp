@@ -95,6 +95,10 @@
             <Grid VerticalOptions="FillAndExpand"
                   RowDefinitions="80,50"
                   BackgroundColor="Transparent">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="gridCredit"
+                                          Tapped="gridCredit_Tapped"/> 
+                </Grid.GestureRecognizers>
                 <Frame Grid.Row="0"
                        BackgroundColor="White"
                        Padding="0"
@@ -118,6 +122,10 @@
                   WidthRequest="55"
                   Margin="10,0,0,0"
                   BackgroundColor="Transparent">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="gridDebit" 
+                                          Tapped="gridDebit_Tapped"/>
+                </Grid.GestureRecognizers>
                 <Frame Grid.Row="0"
                        BackgroundColor="White"
                        Padding="0"
