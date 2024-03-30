@@ -8,13 +8,28 @@ public partial class CreateTransactions : ContentPage
 	public CreateTransactions(string type)
 	{
 		InitializeComponent();
-
+		ConfigDebitOrCredit(type);
 	}
+
 	string number = "";
 
 	protected override async void OnAppearing()
 	{
 		await LoadCategory();
+	}
+    private void ConfigDebitOrCredit(string type)
+	{
+		if (type == "Credit")
+		{
+			lblTitle.Text =  "Depositar";
+			lblAmount.TextColor = Color.FromRgb(46, 204, 113);
+		}
+		else
+		{
+			lblTitle.Text = "Retirar";
+			lblAmount.TextColor = Color.FromRgb(139, 0, 0);
+
+		}
 	}
 	private async Task LoadCategory()
 	{
@@ -45,5 +60,10 @@ public partial class CreateTransactions : ContentPage
 	private void tappedGesture_Tapped(object sender, TappedEventArgs e)
 	{
 
+	}
+
+	private async void btnBack_Clicked(object sender, EventArgs e)
+	{
+		await Navigation.PopAsync();
 	}
 }

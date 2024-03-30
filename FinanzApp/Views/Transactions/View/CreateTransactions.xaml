@@ -17,7 +17,10 @@
                          WidthRequest="30"
                          Margin="10,0,0,0"
                          HeightRequest="50"
-                         HorizontalOptions="Start" />
+                         HorizontalOptions="Start" 
+                         BackgroundColor="Transparent"
+                         x:Name="btnBack"
+                         Clicked="btnBack_Clicked"/>
             <Label x:Name="lblTitle"
                    Text="Debitar"
                    TextColor="White"
