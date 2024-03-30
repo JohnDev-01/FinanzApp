@@ -42,6 +42,7 @@ namespace FinanzApp.Views.Category.ViewModel
 				{
 					var model = item.Object;
 					model.Key = item.Key;
+					model.BorderColor = "Transparent";
 					listReturn.Add(model);
 				}
 			}

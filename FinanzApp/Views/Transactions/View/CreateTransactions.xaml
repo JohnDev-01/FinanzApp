@@ -62,11 +62,12 @@
                                        Padding="2"
                                        CornerRadius="11"
                                        HeightRequest="75"
-                                       BorderColor="Transparent"
-                                       WidthRequest="70">
+                                       BorderColor="{Binding BorderColor}"
+                                       WidthRequest="70"
+                                       AutomationId="{Binding Key}">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="tappedGesture"
-                                                              Tapped="tappedGesture_Tapped" />
+                                                              Tapped="Category_Tapped" />
                                     </Frame.GestureRecognizers>
                                     <StackLayout VerticalOptions="FillAndExpand"
                                                  HorizontalOptions="FillAndExpand">
@@ -125,7 +126,8 @@
                         <input:AdvancedEntry BackgroundColor="Transparent"
                                              TextColor="White"
                                              TextFontSize="17"
-                                             Placeholder="Deja una nota aqui..."/>
+                                             Placeholder="Deja una nota aqui..."
+                                             x:Name="txtNote"/>
                     </StackLayout>
                    
                     <Grid x:Name="KeyboardVirtual"
@@ -347,7 +349,8 @@
                             Text="Guardar"
                             HeightRequest="50"
                             Margin="15,15,15,15"
-                            />
+                            x:Name="btnSave"
+                            Clicked="btnSave_Clicked"/>
                 </StackLayout>
                 
             </ScrollView>
