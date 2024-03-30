@@ -9,6 +9,7 @@ public partial class Home : ContentPage
 	{
 		InitializeComponent();
 	}
+	double AmountAvailable = 0;
 	protected override async void OnAppearing()
 	{
 		await IconDrawing();
@@ -22,11 +23,11 @@ public partial class Home : ContentPage
 
 	private async void gridCredit_Tapped(object sender, TappedEventArgs e)
 	{
-		await Navigation.PushAsync(new CreateTransactions("Credit"));
+		await Navigation.PushAsync(new CreateTransactions("Credit", AmountAvailable));
     }
 
 	private async void gridDebit_Tapped(object sender, TappedEventArgs e)
 	{
-		await Navigation.PushAsync(new CreateTransactions("Debit"));
+		await Navigation.PushAsync(new CreateTransactions("Debit", AmountAvailable));
 	}
 }

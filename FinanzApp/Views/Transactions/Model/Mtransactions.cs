@@ -12,8 +12,8 @@ namespace FinanzApp.Views.Transactions.Model
 		public string Iduser { get; set; }
 		public string Tipo { get; set; } // Ingreso o Egreso
 		public DateTime Fecha { get; set; }
-		public decimal Monto { get; set; }
-		public int CategoriaID { get; set; } // ID de la categoría a la que pertenece la transacción
+		public double Monto { get; set; }
+		public string CategoriaID { get; set; } // ID de la categoría a la que pertenece la transacción
 		public string Descripcion { get; set; }
 	}
 }
