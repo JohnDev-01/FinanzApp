@@ -1,3 +1,4 @@
+using Controls.UserDialogs.Maui;
 using FinanzApp.Views.Login.ViewModels;
 using FinanzApp.Views.Transactions.View;
 
@@ -12,7 +13,10 @@ public partial class Home : ContentPage
 	double AmountAvailable = 0;
 	protected override async void OnAppearing()
 	{
+		UserDialogs.Instance.Loading("Espera...");
 		await IconDrawing();
+		UserDialogs.Instance.HideHud();
+
 	}
 	private async Task IconDrawing()
 	{

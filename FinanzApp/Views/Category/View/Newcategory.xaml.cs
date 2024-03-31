@@ -1,3 +1,4 @@
+using Controls.UserDialogs.Maui;
 using FinanzApp.Views.Category.Model;
 using FinanzApp.Views.Category.ViewModel;
 using FinanzApp.Views.Login.ViewModels;
@@ -15,8 +16,12 @@ public partial class Newcategory : ContentPage
 	}
 	protected override async void OnAppearing()
 	{
+		UserDialogs.Instance.Loading("Espera...");
 		await GenerateListIcon(0);
+		UserDialogs.Instance.HideHud();
+
 	}
+
 	private ObservableCollection<Mimage> listObservable;
 	private async Task GenerateListIcon(int IndexSelected)
 	{
