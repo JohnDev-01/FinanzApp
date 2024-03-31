@@ -45,7 +45,7 @@ public partial class CreateTransactions : ContentPage
 		else
 		{
 			lblTitle.Text = "Retirar";
-			lblAmount.TextColor = Color.FromRgb(139, 0, 0);
+			lblAmount.TextColor = Colors.Red;
 
 		}
 	}
@@ -62,12 +62,12 @@ public partial class CreateTransactions : ContentPage
 		{
 			var numbertyping = ((Frame)sender).AutomationId;
 			
-			if ( number == "0.00")
+			if ( number == "0")
 			{
 				number = "";
 			}
-			number = numbertyping == "DELETE" ? "0.00" :number + numbertyping;
-			lblAmount.Text = Convert.ToDouble(number).ToString("C");
+			number = numbertyping == "DELETE" ? "0" :number + numbertyping;
+			lblAmount.Text = "RD$ "+Convert.ToDouble(number).ToString("N0");
 		}
 		catch (Exception  )
 		{

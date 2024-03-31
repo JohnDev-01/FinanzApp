@@ -99,8 +99,7 @@
                                      HeightRequest="70"
                                      BackgroundColor="Transparent"
                                      Orientation="Horizontal">
-                            
-                            <Label Text="0.00"
+                            <Label Text="RD$ 0"
                                    FontSize="40"
                                    BackgroundColor="Transparent"
                                    FontAttributes="Bold"
