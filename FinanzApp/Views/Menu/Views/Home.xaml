@@ -60,7 +60,7 @@
                              >
                     <Label Text="Mi dinero"
                            FontAttributes="Bold"
-                           FontSize="17"
+                           FontSize="22"
                            TextColor="WhiteSmoke"
                            HorizontalOptions="Start"
                            VerticalOptions="CenterAndExpand"
@@ -76,7 +76,7 @@
                                VerticalTextAlignment="Center" />
                         <Label Text="0.00"
                            FontAttributes="Bold"
-                           FontSize="25"
+                           FontSize="30"
                            TextColor="White"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
@@ -104,6 +104,9 @@
                        Padding="0"
                        WidthRequest="50"
                        CornerRadius="15">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="gridCredit_Tapped" />
+                    </Frame.GestureRecognizers>
                     <Label Text="+"
                            FontSize="26"
                            TextColor="Black"
@@ -131,6 +134,9 @@
                        Padding="0"
                        WidthRequest="50"
                        CornerRadius="15">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="gridDebit_Tapped" />
+                    </Frame.GestureRecognizers>
                     <Label Text="-"
                            FontSize="26"
                            TextColor="Black"
@@ -149,12 +155,13 @@
         <StackLayout Margin="5,0,5,0">
             <StackLayout Orientation="Horizontal">
                 <Label Text="Mis ultimas 5 transacciones"
-                       TextColor="White"
+                       TextColor="White"  
                        FontAttributes="Bold" />
                 <Label Text="Ver todas"
-                       TextColor="White" 
-                       HorizontalOptions="EndAndExpand"
-                       FontAttributes="Bold"/>
+                       FontAttributes="Bold"
+                       TextDecorations="Underline"
+                       TextColor="White"   
+                       HorizontalOptions="EndAndExpand"/>
             </StackLayout>
             
         </StackLayout>
