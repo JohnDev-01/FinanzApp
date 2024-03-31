@@ -1,3 +1,4 @@
+using Controls.UserDialogs.Maui;
 using FinanzApp.Views.Category.ViewModel;
 using FinanzApp.Views.Login.ViewModels;
 
@@ -11,8 +12,11 @@ public partial class CategoryAdministrator : ContentPage
 	}
 	protected override async void OnAppearing()
 	{
+		UserDialogs.Instance.Loading("Espera...");
 		await IconDrawing();
-		await LoadCategory();
+		await LoadCategory(); 
+		UserDialogs.Instance.HideHud();
+
 	}
 	private async Task IconDrawing()
 	{

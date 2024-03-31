@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Behaviors;
+using Controls.UserDialogs.Maui;
 using FinanzApp.Views.Category.Model;
 using FinanzApp.Views.Category.ViewModel;
 using FinanzApp.Views.Login.ViewModels;
@@ -24,9 +25,12 @@ public partial class CreateTransactions : ContentPage
 	string typeTransaction;
 	protected override async void OnAppearing()
 	{
+		UserDialogs.Instance.Loading("Espera...");
 		await LoadCategory();
+		UserDialogs.Instance.HideHud();
+
 	}
-    private void ConfigDebitOrCredit(string type, double amountAvailable)
+	private void ConfigDebitOrCredit(string type, double amountAvailable)
 	{
 		//Config text amount available 
 		lblAmountAvailable.Text = "Tu balance disponible: " + amountAvailable.ToString("C");
