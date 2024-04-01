@@ -7,8 +7,8 @@
     <StackLayout VerticalOptions="FillAndExpand">
         <StackLayout VerticalOptions="Start"
                      HorizontalOptions="FillAndExpand"
-                     Margin="10,10,0,0"
-                     Orientation="Horizontal">
+                     Margin="10,10,10,0"
+                     Orientation="Vertical">
             <StackLayout>
                 <Label Text="Transacciones"
                        VerticalOptions="Center"
@@ -23,7 +23,78 @@
                        FontSize="15"
                        TextColor="White" />
             </StackLayout>
-            
+            <StackLayout Margin="0,15,0,0"
+                         Spacing="10">
+                <Frame BackgroundColor="{DynamicResource TercerBackColor}"
+                       HeightRequest="50"
+                       BorderColor="Transparent"
+                       CornerRadius="15"
+                       Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="frameStartDate"
+                                              Tapped="frameStartDate_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="FillAndExpand"
+                                 HorizontalOptions="FillAndExpand"
+                                 Margin="10,0,10,0">
+                        <Label Text="Desde:"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               FontSize="17" />
+                        <DatePicker HorizontalOptions="EndAndExpand"
+                                    VerticalOptions="Center"
+                                    WidthRequest="100"
+                                    TextColor="White" 
+                                    FontAttributes="Bold"
+                                    FontSize="17"
+                                    Format="dd/MM/yyyy"
+                                    x:Name="dtStart"
+                                    DateSelected="dtStart_DateSelected"/>
+                    </StackLayout>
+                </Frame>
+                <Frame BackgroundColor="{DynamicResource TercerBackColor}"
+                       HeightRequest="50"
+                       BorderColor="Transparent"
+                       CornerRadius="15"
+                       Padding="0"
+                       >
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="framedateEnd"
+                                              Tapped="framedateEnd_Tapped"/>
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="FillAndExpand"
+                                 HorizontalOptions="FillAndExpand"
+                                 Margin="10,0,10,0">
+                        <Label Text="Hasta:"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold"
+                               FontSize="17" />
+                        <DatePicker HorizontalOptions="EndAndExpand"
+                                    VerticalOptions="Center"
+                                    WidthRequest="100"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    FontSize="17" 
+                                    Format="dd/MM/yyyy"
+                                    x:Name="dtEnd"
+                                    DateSelected="dtEnd_DateSelected"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout Margin="0,15,0,0">
+                <Label Text="Tus transacciones"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       FontAttributes="Italic"
+                       FontSize="14" />
+                <CollectionView>
+                    
+                </CollectionView>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
 </ContentPage>
