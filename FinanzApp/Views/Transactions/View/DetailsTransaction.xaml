@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:animation="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="FinanzApp.Views.Transactions.View.DetailsTransaction"
+             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             NavigationPage.HasNavigationBar="False"
+             Title="DetailsTransaction">
+    <StackLayout>
+        <StackLayout x:Name="StackTitle"
+                     HeightRequest="50"
+                     VerticalOptions="Start"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                     BackgroundColor="Transparent">
+            <ImageButton Source="back.png"
+                         WidthRequest="30"
+                         Margin="10,0,0,0"
+                         HeightRequest="50"
+                         HorizontalOptions="Start"
+                         BackgroundColor="Transparent"
+                         x:Name="btnBack"
+                         Clicked="btnBack_Clicked" />
+            <Label x:Name="lblTitle"
+                   Text="Detalles de la transacción"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"
+                   FontSize="19"
+                   Margin="0,0,40,0" />
+        </StackLayout>
+        <Grid Padding="0"
+              Margin="0,20,0,0"
+              BackgroundColor="Transparent"
+              VerticalOptions="FillAndExpand"
+              RowDefinitions="*">
+            <BoxView Grid.Row="0"
+                     Color="{DynamicResource TercerBackColor}"
+                     BackgroundColor="Transparent"
+                     CornerRadius="60,60,0,0"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand" />
+            <ScrollView Grid.Row="0">
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand">
+                    <animation:SKLottieView RepeatCount="0"
+                                            RepeatMode="Restart"
+                                            Source="correcto.json"
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="200"
+                                            WidthRequest="200" />
+                    <StackLayout Spacing="15"
+                                 Opacity="0.8">
+                        <Frame Margin="10,0,10,0"
+                               BackgroundColor="#342A4D"
+                               BorderColor="Transparent"
+                               Padding="0"
+                               HeightRequest="60"
+                               CornerRadius="15">
+                            <StackLayout Orientation="Vertical"
+                                         Margin="10,10,0,0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Fecha de la transacción"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="White" />
+                                    <Image Source="schedule.png"
+                                           WidthRequest="20"
+                                           Margin="5,0,0,0"
+                                           HeightRequest="20"/>
+                                </StackLayout>
+                                
+                                <Label Text=""
+                                       FontSize="14"
+                                       FontAttributes="None"
+                                       TextColor="White" 
+                                       x:Name="lblFecha"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Margin="10,0,10,0"
+                               BackgroundColor="#342A4D"
+                               BorderColor="Transparent"
+                               Padding="0"
+                               HeightRequest="60"
+                               CornerRadius="15">
+                            <StackLayout Orientation="Vertical"
+                                         Margin="10,10,0,0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Tipo de transaccion"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                </StackLayout>
+                                <Label Text=""
+                                       FontSize="14"
+                                       FontAttributes="None"
+                                       TextColor="White"
+                                       x:Name="lblTipo" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame Margin="10,0,10,0"
+                               BackgroundColor="#342A4D"
+                               BorderColor="Transparent"
+                               Padding="0"
+                               HeightRequest="60"
+                               CornerRadius="15">
+                            <StackLayout Orientation="Vertical"
+                                         Margin="10,10,0,0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Monto"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Image Source="money.png"
+                                           WidthRequest="20"
+                                           Margin="5,0,0,0"
+                                           HeightRequest="20" />
+                                </StackLayout>
+                                <Label Text=""
+                                       FontSize="14"
+                                       FontAttributes="None"
+                                       TextColor="White" 
+                                       x:Name="lblMonto"/>
+                            </StackLayout>
+                        </Frame>
+                        
+                        <Frame Margin="10,0,10,0"
+                               BackgroundColor="#342A4D"
+                               BorderColor="Transparent"
+                               Padding="0"
+                               HeightRequest="60"
+                               CornerRadius="15">
+                            <StackLayout Orientation="Vertical"
+                                         Margin="10,10,0,0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Categoria"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Image WidthRequest="20"
+                                           Margin="5,0,0,0"
+                                           HeightRequest="20"
+                                           x:Name="iconCategory"/>
+                                </StackLayout>
+                                <Label Text=""
+                                       FontSize="14"
+                                       FontAttributes="None"
+                                       TextColor="White"
+                                       x:Name="lblCategoria"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Margin="10,0,10,0"
+                               BackgroundColor="#342A4D"
+                               BorderColor="Transparent"
+                               Padding="0"
+                               CornerRadius="15">
+                            <StackLayout Orientation="Vertical"
+                                         Margin="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Descripción"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="White" />
+                                    <Image Source="information.png"
+                                           WidthRequest="20"
+                                           Margin="5,0,0,0"
+                                           HeightRequest="20" />
+                                </StackLayout>
+                                <Label Text=""
+                                       FontSize="14"
+                                       FontAttributes="None"
+                                       TextColor="White" 
+                                       x:Name="lblDescripcion"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </StackLayout>
+</ContentPage>

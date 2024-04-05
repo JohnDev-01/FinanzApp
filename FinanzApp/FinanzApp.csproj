@@ -75,11 +75,15 @@
 	  <None Remove="Resources\Images\icon5.png" />
 	  <None Remove="Resources\Images\icon6.png" />
 	  <None Remove="Resources\Images\icono.png" />
+	  <None Remove="Resources\Images\information.png" />
 	  <None Remove="Resources\Images\mail.png" />
+	  <None Remove="Resources\Images\money.png" />
 	  <None Remove="Resources\Images\pasword.png" />
+	  <None Remove="Resources\Images\schedule.png" />
 	  <None Remove="Resources\Images\transaction.png" />
 	  <None Remove="Resources\Images\user.png" />
 	  <None Remove="Resources\Images\volver.png" />
+	  <None Remove="Resources\Raw\animateTransaction.json" />
 	  <None Remove="Resources\Raw\correcto.json" />
 	  <None Remove="Resources\raw\splashScreen.json" />
 	  <None Remove="Resources\Raw\triste.json" />
@@ -142,6 +146,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Transactions\View\CreateTransactions.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Transactions\View\DetailsTransaction.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Transactions\View\Transaction.xaml">

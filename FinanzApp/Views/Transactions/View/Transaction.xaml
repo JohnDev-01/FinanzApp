@@ -26,10 +26,11 @@
             <Grid Margin="0,15,0,0"
                   ColumnDefinitions="*,*"
                   HeightRequest="35"
-                  ColumnSpacing="10">
+                  ColumnSpacing="10"
+                  Opacity="0.9">
                 <Frame BackgroundColor="Transparent"
                        Grid.Column="0"
-                       Padding="0"
+                       Padding="3"
                        CornerRadius="10">
                     <Picker x:Name="pickerTypeTransaction"
                             TextColor="White"
@@ -40,8 +41,9 @@
                 </Frame>
                 <Frame BackgroundColor="Transparent"
                        Grid.Column="1"
-                       Padding="0"
-                       CornerRadius="10">
+                       Padding="3"
+                       CornerRadius="10"
+                       >
                     <Picker x:Name="pickerFilterDate"
                             TextColor="White"
                             FontAttributes="Bold"
@@ -73,7 +75,12 @@
                                 <Grid Grid.Row="0"
                                       ColumnDefinitions="40,*,150"
                                       BackgroundColor="Transparent"
-                                      HeightRequest="40">
+                                      HeightRequest="40"
+                                      AutomationId="{Binding ID}">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="tapViewDetail"
+                                                              Tapped="tapViewDetail_Tapped" />
+                                    </Grid.GestureRecognizers>
                                     <Frame BackgroundColor="{DynamicResource TercerBackColor}"
                                            Padding="5"
                                            Margin="4"
