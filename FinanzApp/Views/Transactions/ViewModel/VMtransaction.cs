@@ -76,7 +76,9 @@ namespace FinanzApp.Views.Transactions.ViewModel
 					.Child("Transactions")
 					.Child(userId)
 					.OnceAsync<Mtransactions>())
-					.Where(t => Convert.ToDateTime(t.Object.Fecha) >= dateLast).ToList();
+					.Where(t => Convert.ToDateTime(t.Object.Fecha) >= dateLast)
+					.OrderByDescending(a => Convert.ToDateTime(a.Object.Fecha))
+					.ToList();
 
 				if (type != "All")
 				{
@@ -94,7 +96,7 @@ namespace FinanzApp.Views.Transactions.ViewModel
 							 join ca in listCategories on d.CategoriaID equals ca.Key
 							 select new Mtransactions
 							 {
-								 CategoriaID=d.CategoriaID,
+								 CategoriaID=ca.Name,
 								 Descripcion = d.Descripcion,
 								 ID=d.ID,
 								 Fecha=d.Fecha,

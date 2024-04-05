@@ -1,5 +1,7 @@
 using Controls.UserDialogs.Maui;
+using FinanzApp.Views.Transactions.Model;
 using FinanzApp.Views.Transactions.ViewModel;
+using Newtonsoft.Json.Bson;
 
 namespace FinanzApp.Views.Transactions.View;
 
@@ -11,6 +13,7 @@ public partial class Transaction : ContentPage
 		LoadConfigInitial();
 	}
 	bool applyChanges = false;
+	List<Mtransactions> listTransaction;
 	protected override async void OnAppearing()
 	{
 		await ShowTransactions();
@@ -43,8 +46,9 @@ public partial class Transaction : ContentPage
 					  filterdays == "Últimos 60 días" ? 60 :
 					  filterdays == "Últimos 90 días" ? 90 : 0;
 
-		var list = await VMtransaction.GetTransactions(typeTransaction, days);
-		collectionView.ItemsSource = list;
+		listTransaction = new List<Mtransactions>();
+		listTransaction = await VMtransaction.GetTransactions(typeTransaction, days);
+		collectionView.ItemsSource = listTransaction;
 		UserDialogs.Instance.HideHud();
 	}
 
@@ -58,5 +62,25 @@ public partial class Transaction : ContentPage
 	{
 		if (applyChanges == true)
 			await ShowTransactions();
+	}
+	private async Task NavigationDetails(string Id)
+	{
+		//get transaction model with id 
+		var model = listTransaction.Where(a => a.ID == Id).FirstOrDefault();
+		await Navigation.PushAsync(new DetailsTransaction(model));
+	}
+	private async void tapViewDetail_Tapped(object sender, TappedEventArgs e)
+	{
+		try
+		{
+			var Id = ((Grid)sender).AutomationId;
+			if (Id != null)
+			{
+				await NavigationDetails(Id);	
+			}
+		}
+		catch (Exception)
+		{
+		}
 	}
 }
