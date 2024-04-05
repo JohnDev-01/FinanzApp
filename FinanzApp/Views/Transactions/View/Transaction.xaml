@@ -5,10 +5,10 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
     <StackLayout VerticalOptions="FillAndExpand">
-        <StackLayout VerticalOptions="Start"
+        <StackLayout VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"
-                     Margin="10,10,0,0"
-                     Orientation="Horizontal">
+                     Margin="10,10,10,0"
+                     Orientation="Vertical">
             <StackLayout>
                 <Label Text="Transacciones"
                        VerticalOptions="Center"
@@ -23,7 +23,106 @@
                        FontSize="15"
                        TextColor="White" />
             </StackLayout>
-            
+            <Grid Margin="0,15,0,0"
+                  ColumnDefinitions="*,*"
+                  HeightRequest="35"
+                  ColumnSpacing="10">
+                <Frame BackgroundColor="Transparent"
+                       Grid.Column="0"
+                       Padding="0"
+                       CornerRadius="10">
+                    <Picker x:Name="pickerTypeTransaction"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Center" 
+                            SelectedIndexChanged="pickerTypeTransaction_SelectedIndexChanged"/>
+                </Frame>
+                <Frame BackgroundColor="Transparent"
+                       Grid.Column="1"
+                       Padding="0"
+                       CornerRadius="10">
+                    <Picker x:Name="pickerFilterDate"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalTextAlignment="Center"
+                            SelectedIndexChanged="pickerFilterDate_SelectedIndexChanged"/>
+                </Frame>
+            </Grid>
+            <StackLayout Margin="0,15,0,0"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                <Label Text="Tus transacciones"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       FontAttributes="Italic"
+                       FontSize="14" />
+                <CollectionView x:Name="collectionView"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="FillAndExpand"
+                                Margin="0,20,0,0">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                         Span="1"
+                                         VerticalItemSpacing="15" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="*,0.5">
+                                <Grid Grid.Row="0"
+                                      ColumnDefinitions="40,*,150"
+                                      BackgroundColor="Transparent"
+                                      HeightRequest="40">
+                                    <Frame BackgroundColor="{DynamicResource TercerBackColor}"
+                                           Padding="5"
+                                           Margin="4"
+                                           BorderColor="Transparent">
+                                        <Image Source="{Binding ImagenCategoria}" />
+                                    </Frame>
+                                    <Grid RowDefinitions="*,*"
+                                          Grid.Column="1">
+                                        <Frame BackgroundColor="Transparent"
+                                               BorderColor="#282839"
+                                               Grid.Row="0"
+                                               Padding="3"
+                                               HasShadow="True"
+                                               HorizontalOptions="Start"
+                                               CornerRadius="7">
+                                            <Label Text="{Binding Fecha}"
+                                                   TextColor="White"
+                                                   FontSize="10"
+                                                   FontAttributes="Bold"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="Start"
+                                                   Grid.Row="0" />
+                                        </Frame>
+                                        <Label Text="{Binding Descripcion}"
+                                               TextColor="White"
+                                               FontSize="12"
+                                               FontAttributes="Bold"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Start"
+                                               Grid.Row="1" />
+                                    </Grid>
+                                    <Label Text="{Binding Monto, StringFormat='{0:C}'}"
+                                           TextColor="{Binding TextColorAmount}"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="End"
+                                           Grid.Column="2" />
+                                </Grid>
+                                <BoxView Grid.Row="1"
+                                         BackgroundColor="#282839"
+                                         VerticalOptions="FillAndExpand"
+                                         HorizontalOptions="FillAndExpand"
+                                         CornerRadius="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
 </ContentPage>

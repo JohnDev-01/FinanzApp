@@ -127,7 +127,8 @@
                    HorizontalOptions="Center"
                    VerticalOptions="End"
                    Margin="0,0,0,20"
-                   Opacity="0">
+                   Opacity="0"
+                   TextColor="White">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer x:Name="lblCrearTapped"
                                           Tapped="lblCrearTapped_Tapped" />
