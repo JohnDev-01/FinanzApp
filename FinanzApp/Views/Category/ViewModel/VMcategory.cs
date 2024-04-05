@@ -53,6 +53,32 @@ namespace FinanzApp.Views.Category.ViewModel
 			return listReturn;
 
 		}
+		public static async Task<List<Mcategory>> GetListCategoryFromIdUser_Transactions()
+		{
+			List<Mcategory> listReturn = new List<Mcategory>();
+			try
+			{
+				var iduser = VMuser.GetIduserLogin();
+				var listCategory = (await Conection.firebase
+					.Child("Category")
+					.Child(iduser)
+					.OrderByKey()
+					.OnceAsync<Mcategory>());
+				foreach (var item in listCategory)
+				{
+					var model = item.Object;
+					model.Key = item.Key;
+					model.BorderColor = "Transparent";
+					listReturn.Add(model);
+				}
+			}
+			catch (Exception ex)
+			{
+				await Console.Out.WriteLineAsync(ex.Message + ". In VMcategory.GetCategoryFromIdUser");
+			}
+			return listReturn;
+
+		}
 		public static async Task DeleteCategory(string key)
 		{
 			try

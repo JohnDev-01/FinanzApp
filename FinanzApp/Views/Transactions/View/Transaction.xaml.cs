@@ -1,3 +1,6 @@
+using Controls.UserDialogs.Maui;
+using FinanzApp.Views.Transactions.ViewModel;
+
 namespace FinanzApp.Views.Transactions.View;
 
 public partial class Transaction : ContentPage
@@ -5,47 +8,55 @@ public partial class Transaction : ContentPage
 	public Transaction()
 	{
 		InitializeComponent();
+		LoadConfigInitial();
 	}
-	protected override void OnAppearing()
+	bool applyChanges = false;
+	protected override async void OnAppearing()
 	{
-		base.OnAppearing();	
+		await ShowTransactions();
+	}
+	private void LoadConfigInitial()
+	{
+		//Load configuration from type transactions
+		pickerTypeTransaction.Items.Add("Créditos");
+		pickerTypeTransaction.Items.Add("Débitos");
+		pickerTypeTransaction.Items.Add("Todas");
+		//selected item 
+		pickerTypeTransaction.SelectedItem = "Todas";
+
+		//Load configuration from date 
+		pickerFilterDate.Items.Add("Últimos 30 días");
+		pickerFilterDate.Items.Add("Últimos 60 días");
+		pickerFilterDate.Items.Add("Últimos 90 días");
+		//Selected item 
+		pickerFilterDate.SelectedItem = "Últimos 30 días";
+		applyChanges = true;
+	}
+	private async Task ShowTransactions()
+	{
+
+		UserDialogs.Instance.ShowLoading("Mostrando transacciones...");
+		//Process parameters 
+		var typeTransaction = pickerTypeTransaction.SelectedItem.ToString();
+		var filterdays = pickerFilterDate.SelectedItem.ToString();
+		var days = filterdays == "Últimos 30 días" ? 30 :
+					  filterdays == "Últimos 60 días" ? 60 :
+					  filterdays == "Últimos 90 días" ? 90 : 0;
+
+		var list = await VMtransaction.GetTransactions(typeTransaction, days);
+		collectionView.ItemsSource = list;
+		UserDialogs.Instance.HideHud();
 	}
 
-	private void ValidateDate()
+	private async void pickerTypeTransaction_SelectedIndexChanged(object sender, EventArgs e)
 	{
-		//This method validates that the start date is greater
-		//than the end date, if true then the start date will be the end date
-		try
-		{
-			var dateStart = dtStart.Date;
-			var dateEnd = dtEnd.Date;
-			if (dateStart > dateEnd)
-			{
-				dtStart.Date = dateEnd;
-			}
-		}
-		catch (Exception)
-		{
-		}
+		if (applyChanges == true)
+			await ShowTransactions();
 	}
 
-	private void dtEnd_DateSelected(object sender, DateChangedEventArgs e)
+	private async void pickerFilterDate_SelectedIndexChanged(object sender, EventArgs e)
 	{
-		ValidateDate();
-	}
-
-	private void dtStart_DateSelected(object sender, DateChangedEventArgs e)
-	{
-		ValidateDate();
-	}
-
-	private void frameStartDate_Tapped(object sender, TappedEventArgs e)
-	{
-		dtStart.Focus();
-	}
-
-	private void framedateEnd_Tapped(object sender, TappedEventArgs e)
-	{
-		dtEnd.Focus();
+		if (applyChanges == true)
+			await ShowTransactions();
 	}
 }

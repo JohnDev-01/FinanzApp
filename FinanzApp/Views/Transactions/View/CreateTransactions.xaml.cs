@@ -142,7 +142,7 @@ public partial class CreateTransactions : ContentPage
 			{
 				CategoriaID = keyCategory,
 				Descripcion = txtNote.Text,
-				Fecha = DateTime.Now,
+				Fecha = DateTime.Now.ToString("dd/MM/yyyy"),
 				Monto = Convert.ToDouble(number),
 				Tipo = typeTransaction,
 				Iduser = Iduser
