@@ -15,8 +15,8 @@ public partial class CrearCuenta : ContentPage
 	protected override async void OnAppearing()
 	{
 
-		await stackInicial.FadeTo(1, 1500);
-		await StackEmailPass.FadeTo(1, 1000);
+		await stackInicial.FadeTo(1, 500);
+		await StackEmailPass.FadeTo(1, 500);
 	}
 	private async void btnVolver_Clicked(object sender, EventArgs e)
 	{

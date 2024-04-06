@@ -1,3 +1,4 @@
+using Android.Views;
 using CommunityToolkit.Maui.Alerts;
 using FinanzApp.Views.Login.ViewModels;
 using FinanzApp.Views.Menu.Views;
@@ -13,12 +14,21 @@ public partial class Login : ContentPage
 	}
 	protected override async void OnAppearing()
 	{
+		GetRememberEmail();
+		await stackInicial.FadeTo(1, 500);
+		await StackEmailPass.FadeTo(1, 500);
+		await lblCrear.FadeTo(1, 500);
 		
-		await stackInicial.FadeTo(1, 1500);
-		await StackEmailPass.FadeTo(1, 1000);
-		await lblCrear.FadeTo(1, 1000);
 	}
-
+	private void GetRememberEmail()
+	{
+		bool isRememberActive = Preferences.Get("RememberEmail",false);
+		if (isRememberActive)
+		{
+			txtEmail.Text = Preferences.Get("Email", "");
+			switchRememberEmail.IsToggled = true;
+		}
+	}
 	private async void lblCrearTapped_Tapped(object sender, TappedEventArgs e)
 	{
 		await Task.WhenAll(stackInicial.FadeTo(0, 500),
@@ -43,6 +53,8 @@ public partial class Login : ContentPage
 		var isSign =  await VMuser.LoginWithCredential(txtEmail.Text, txtPassword.Text);
 		if (isSign)
 		{
+			Preferences.Set("Email", txtEmail.Text);
+			if (switchRememberEmail.IsToggled == false) { Preferences.Set("RememberEmail", false); }
 			Application.Current.MainPage = new NavigationPage(new Container());
 		}
 	}
@@ -81,4 +93,16 @@ public partial class Login : ContentPage
 		btnIniciar.IsVisible = true;
 		animacionCargandoBoton.IsVisible = false;
 	}
+
+	private void Switch_Toggled(object sender, ToggledEventArgs e)
+	{
+		try
+		{
+			Preferences.Set("RememberEmail",switchRememberEmail.IsToggled);	
+		}
+		catch (Exception)
+		{
+
+		}
+    }
 }
