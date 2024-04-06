@@ -66,7 +66,7 @@
                            VerticalOptions="CenterAndExpand"
                            VerticalTextAlignment="Center" />
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="RD$"
+                        <Label Text="RD"
                                FontAttributes="Bold"
                                FontSize="11"
                                TextColor="White"
@@ -80,7 +80,8 @@
                            TextColor="White"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
-                           VerticalTextAlignment="Center" />
+                           VerticalTextAlignment="Center"
+                           x:Name="lblBalance"/>
                     </StackLayout>
                     
                 </StackLayout>

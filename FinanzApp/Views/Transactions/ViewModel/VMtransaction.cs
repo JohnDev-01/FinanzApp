@@ -115,5 +115,38 @@ namespace FinanzApp.Views.Transactions.ViewModel
 				return null;
 			}
 		}
+		public static async Task<double> GetBalance()
+		{
+			try
+			{
+				//Get user id 
+				var userId = VMuser.GetIduserLogin();
+
+				//Get Categories used from user 
+				var listCategories = await VMcategory.GetListCategoryFromIdUser_Transactions();
+
+
+				var allTransaction = (await Conection.firebase
+					.Child("Transactions")
+					.Child(userId)
+					.OnceAsync<Mtransactions>())
+					.ToList();
+
+				double debtCalculated = allTransaction
+					.Where(a => a.Object.Tipo == "Debit")
+					.Sum(a => a.Object.Monto);
+
+				double creditCalculated = allTransaction
+					.Where(a => a.Object.Tipo == "Credit")
+					.Sum(a => a.Object.Monto);
+
+				double balanceCalculated = creditCalculated - debtCalculated;
+				return balanceCalculated < 0 ? 0 : balanceCalculated;
+			}
+			catch (Exception)
+			{
+				return 0;
+			}
+		}
 	}
 }

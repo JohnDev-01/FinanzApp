@@ -39,7 +39,7 @@ public partial class CreateTransactions : ContentPage
 		//Config title and color of lblamount 
 		if (type == "Credit")
 		{
-			lblTitle.Text =  "Depositar";
+			lblTitle.Text = "Depositar";
 			lblAmount.TextColor = Color.FromRgb(46, 204, 113);
 		}
 		else
@@ -53,7 +53,7 @@ public partial class CreateTransactions : ContentPage
 	{
 		listCategories = await VMcategory.GetListCategoryFromIdUser();
 		colletionCategory.ItemsSource = listCategories;
-		
+
 	}
 
 	private void Keyboard_Tapped(object sender, TappedEventArgs e)
@@ -61,15 +61,15 @@ public partial class CreateTransactions : ContentPage
 		try
 		{
 			var numbertyping = ((Frame)sender).AutomationId;
-			
-			if ( number == "0")
+
+			if (number == "0")
 			{
 				number = "";
 			}
-			number = numbertyping == "DELETE" ? "0" :number + numbertyping;
-			lblAmount.Text = "RD$ "+Convert.ToDouble(number).ToString("N0");
+			number = numbertyping == "DELETE" ? "0" : number + numbertyping;
+			lblAmount.Text = "RD$ " + Convert.ToDouble(number).ToString("N0");
 		}
-		catch (Exception  )
+		catch (Exception)
 		{
 
 		}
@@ -80,8 +80,8 @@ public partial class CreateTransactions : ContentPage
 		//Create drawing process from category
 		try
 		{
-		   keyCategory = ((Frame)sender).AutomationId;
-			listCategories.Where(a => a.BorderColor == "White").ToList().ForEach(action => action.BorderColor = "Transparent") ;
+			keyCategory = ((Frame)sender).AutomationId;
+			listCategories.Where(a => a.BorderColor == "White").ToList().ForEach(action => action.BorderColor = "Transparent");
 
 
 			listCategories.Where(a => a.Key == keyCategory)
@@ -89,9 +89,9 @@ public partial class CreateTransactions : ContentPage
 				.ForEach(action => action.BorderColor = "White");
 
 			colletionCategory.ItemsSource = null;
-			colletionCategory.ItemsSource= listCategories;
+			colletionCategory.ItemsSource = listCategories;
 		}
-		catch (Exception )
+		catch (Exception)
 		{
 
 		}
@@ -127,7 +127,22 @@ public partial class CreateTransactions : ContentPage
 	{
 		if (await ValidateInputDataTransaction())
 		{
-			await InsertTransaction_Service();
+			if (await ValidateAmount() == true)
+			{
+				await InsertTransaction_Service();
+			}
+		}
+	}
+	private async Task<bool> ValidateAmount()
+	{
+		if (Convert.ToDouble(number) > _amountAvailable && typeTransaction == "Debit")
+		{
+			await DisplayAlert("Sin balance:", "No posees suficiente balance para realizar el retiro", "OK");
+			return false;
+		}
+		else
+		{
+			return true;
 		}
 	}
 	private async Task InsertTransaction_Service()
