@@ -103,13 +103,23 @@ public partial class Newcategory : ContentPage
 			Name = txtNombreCategoria.Text,
 			EnableView = true,
 			Icon = sourceImage,
-			Iduser = iduser
+			Iduser = iduser,
+			Color = ChooseRandomlyColor()
 		};
 		await VMcategory.InsertCategory(modelCategory);
 		await Navigation.PopAsync();
 
 	}
+	static string ChooseRandomlyColor()
+	{
+		string[] options = { "#5ABD42", "#F49E00", "#CA0202" };
+		// Generate a random number between 0 and the number of options - 1
+		Random rnd = new Random();
+		int randomIndex = rnd.Next(0, options.Length);
 
+		// Return the option corresponding to the random index
+		return options[randomIndex];
+	}
 	private async void btnBack_Clicked(object sender, EventArgs e)
 	{
 		await Navigation.PopAsync();

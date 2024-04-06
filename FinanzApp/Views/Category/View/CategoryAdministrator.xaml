@@ -70,46 +70,50 @@
                         Margin="10,30,10,0">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
-                                 Span="2"
-                                 HorizontalItemSpacing="10"
-                                 VerticalItemSpacing="10"/>
+                                 Span="1"
+                                 HorizontalItemSpacing="0"
+                                 VerticalItemSpacing="10" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Margin="5,10,5,10"
+                    <Frame Margin="5,0,5,0"
                            BackgroundColor="{DynamicResource TercerBackColor}"
-                           Padding="2"
-                           CornerRadius="30"
-                           HeightRequest="150"
+                           Padding="0"
+                           CornerRadius="15"
+                           HeightRequest="100"
                            BorderColor="Transparent"
-                           WidthRequest="150">
+                           HorizontalOptions="FillAndExpand">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="tappedGesture"
                                                   Tapped="tappedGesture_Tapped" />
                         </Frame.GestureRecognizers>
-                        <StackLayout VerticalOptions="FillAndExpand"
-                                     HorizontalOptions="FillAndExpand">
+                        <Grid ColumnDefinitions="8,60,*,30">
+                            <BoxView Grid.Column="0"
+                                     BackgroundColor="{Binding Color}" />
+                            <Image Source="{Binding Icon}"
+                                   VerticalOptions="Center"
+                                   HeightRequest="60"
+                                   Grid.Column="1"
+                                   Margin="10,5,0,5"/>
+                            <Label TextColor="White"
+                                   FontAttributes="Bold"
+                                   FontSize="16"
+                                   HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalOptions="Center"
+                                   Text="{Binding Name}"
+                                   Margin="10,0,0,5"
+                                   Grid.Column="2" />
                             <ImageButton Source="delete.png"
-                                         WidthRequest="20"
                                          VerticalOptions="StartAndExpand"
                                          HorizontalOptions="EndAndExpand"
                                          Margin="0,5,10,0"
                                          HeightRequest="30"
                                          AutomationId="{Binding Key}"
                                          x:Name="btnDeleteCategory"
-                                         Clicked="btnDeleteCategory_Clicked"/>
-                            <Image Source="{Binding Icon}"
-                                   VerticalOptions="Center"
-                                   HeightRequest="60" />
-                            <Label TextColor="White"
-                                   FontAttributes="Bold"
-                                   FontSize="16"
-                                   HorizontalOptions="FillAndExpand"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalOptions="EndAndExpand"
-                                   Text="{Binding Name}" 
-                                   Margin="0,0,0,5"/>
-                        </StackLayout>
+                                         Clicked="btnDeleteCategory_Clicked"
+                                         Grid.Column="3" />
+                        </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
