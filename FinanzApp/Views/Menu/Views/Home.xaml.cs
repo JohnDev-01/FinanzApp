@@ -13,12 +13,14 @@ public partial class Home : ContentPage
 		InitializeComponent();
 	}
 	double AmountAvailable = 0;
+	
 	List<Mtransactions> listTransaction;
 	protected override async void OnAppearing()
 	{
 		UserDialogs.Instance.Loading("Espera...");
 		await IconDrawing();
 		await ShowTransactions();
+		await ShowBalance();
 		UserDialogs.Instance.HideHud();
 
 	}
@@ -38,6 +40,11 @@ public partial class Home : ContentPage
 	{
 		await Navigation.PushAsync(new CreateTransactions("Debit", AmountAvailable));
 	}
+	private async Task ShowBalance()
+	{
+		AmountAvailable = await VMtransaction.GetBalance();
+		lblBalance.Text = AmountAvailable.ToString("C0");
+	}
 	private async Task ShowTransactions()
 	{
 
@@ -45,7 +52,9 @@ public partial class Home : ContentPage
 		//Process parameters 
 		
 	   listTransaction = new List<Mtransactions>();
-		listTransaction = (await VMtransaction.GetTransactions("Todas", 30)).Take(5).ToList();
+		listTransaction = (await VMtransaction.GetTransactions("Todas", 30))
+			.Take(5)
+			.ToList();
 		collectionView.ItemsSource = listTransaction;
 		UserDialogs.Instance.HideHud();
 	}

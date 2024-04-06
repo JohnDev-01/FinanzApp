@@ -17,10 +17,10 @@
                          WidthRequest="30"
                          Margin="10,0,0,0"
                          HeightRequest="50"
-                         HorizontalOptions="Start" 
+                         HorizontalOptions="Start"
                          BackgroundColor="Transparent"
                          x:Name="btnBack"
-                         Clicked="btnBack_Clicked"/>
+                         Clicked="btnBack_Clicked" />
             <Label x:Name="lblTitle"
                    Text="Debitar"
                    TextColor="White"
@@ -61,9 +61,9 @@
                                        BackgroundColor="Transparent"
                                        Padding="2"
                                        CornerRadius="11"
+                                       Opacity="0.8"
                                        HeightRequest="75"
                                        BorderColor="{Binding BorderColor}"
-                                       WidthRequest="70"
                                        AutomationId="{Binding Key}">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="tappedGesture"
@@ -75,8 +75,8 @@
                                                VerticalOptions="CenterAndExpand"
                                                HeightRequest="30"
                                                Margin="0,10,0,0" />
-                                        <Label TextColor="White"
-                                               FontAttributes="Bold"
+                                        <Label TextColor="#E4E4E4"
+                                               FontAttributes="None"
                                                FontSize="13"
                                                HorizontalOptions="FillAndExpand"
                                                HorizontalTextAlignment="Center"
@@ -104,8 +104,8 @@
                                    BackgroundColor="Transparent"
                                    FontAttributes="Bold"
                                    TextColor="Green"
-                                   Margin="15,15,15,5" 
-                                   x:Name="lblAmount"/>
+                                   Margin="15,15,15,5"
+                                   x:Name="lblAmount" />
                         </StackLayout>
                         <Label Text="Tu balance: RD$ 0.00"
                                BackgroundColor="Transparent"
@@ -114,21 +114,20 @@
                                FontAttributes="None"
                                TextColor="White"
                                Margin="15,15,15,5"
-                               x:Name="lblAmountAvailable"/>
+                               x:Name="lblAmountAvailable" />
                     </StackLayout>
                     <StackLayout  Margin="15,15,15,5">
-                         <Label Text="Notas"
-                           FontSize="16"
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           Margin="5,0,0,0"/>
+                        <Label Text="Notas"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               Margin="5,0,0,0" />
                         <input:AdvancedEntry BackgroundColor="Transparent"
                                              TextColor="White"
                                              TextFontSize="17"
                                              Placeholder="Deja una nota aqui..."
-                                             x:Name="txtNote"/>
+                                             x:Name="txtNote" />
                     </StackLayout>
-                   
                     <Grid x:Name="KeyboardVirtual"
                           RowDefinitions="75,75,75,75">
                         <Grid Grid.Row="0"
@@ -304,7 +303,6 @@
                         </Grid>
                         <Grid Grid.Row="3"
                               ColumnDefinitions="*,*,*">
-                           
                             <Frame Grid.Column="1"
                                    Margin="10,5,10,5"
                                    BackgroundColor="{DynamicResource PrimaryColor}"
@@ -349,9 +347,8 @@
                             HeightRequest="50"
                             Margin="15,15,15,15"
                             x:Name="btnSave"
-                            Clicked="btnSave_Clicked"/>
+                            Clicked="btnSave_Clicked" />
                 </StackLayout>
-                
             </ScrollView>
         </Grid>
     </StackLayout>
