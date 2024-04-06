@@ -64,21 +64,45 @@
                         <validation:RequiredValidation Message="Clave invalida" />
                     </input:AdvancedEntry.Validations>
                 </input:AdvancedEntry>
-                <Label Text="Olvidé mi clave secreta"
-                       FontAttributes="Italic"
-                       TextColor="White"
-                       x:Name="lblRecuperar"
-                       TextDecorations="Underline"
-                       FontSize="13"
-                       HeightRequest="20"
-                       VerticalTextAlignment="Center"
-                       HorizontalOptions="End"
-                       Margin="0,0,10,0">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="lblRecuperarClave"
-                                              Tapped="lblRecuperarClave_Tapped" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <Grid ColumnDefinitions="*,*"
+                      HeightRequest="20">
+                    <StackLayout Grid.Column="0"
+                                 Orientation="Horizontal"
+                                 >
+                        <Switch OnColor="{DynamicResource PrimaryColor}"
+                                BackgroundColor="Transparent"
+                                ThumbColor="Gray"
+                                Toggled="Switch_Toggled"
+                                x:Name="switchRememberEmail"/>
+                        <Label Grid.Column="1"
+                               Text="Recordar email"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               x:Name="lblEmail"
+                               TextDecorations="None"
+                               FontSize="13"
+                               HeightRequest="20"
+                               VerticalTextAlignment="Center"
+                               HorizontalOptions="End"
+                               Margin="0,0,10,0"></Label>
+                    </StackLayout>
+                    <Label Grid.Column="1"
+                           Text="Olvidé mi clave secreta"
+                           FontAttributes="Italic"
+                           TextColor="White"
+                           x:Name="lblRecuperar"
+                           TextDecorations="Underline"
+                           FontSize="13"
+                           HeightRequest="20"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="End"
+                           Margin="0,0,10,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="lblRecuperarClave"
+                                                  Tapped="lblRecuperarClave_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
                 <Border HeightRequest="2"
                         BackgroundColor="LightGray"
                         Opacity="0.5"
