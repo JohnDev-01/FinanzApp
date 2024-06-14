@@ -25,12 +25,12 @@
             </StackLayout>
             <Grid Margin="0,15,0,0"
                   ColumnDefinitions="*,*"
-                  HeightRequest="35"
+                  HeightRequest="45"
                   ColumnSpacing="10"
                   Opacity="0.9">
                 <Frame BackgroundColor="Transparent"
                        Grid.Column="0"
-                       Padding="3"
+                       Padding="2"
                        CornerRadius="10">
                     <Picker x:Name="pickerTypeTransaction"
                             TextColor="White"
@@ -41,7 +41,7 @@
                 </Frame>
                 <Frame BackgroundColor="Transparent"
                        Grid.Column="1"
-                       Padding="3"
+                       Padding="2"
                        CornerRadius="10"
                        >
                     <Picker x:Name="pickerFilterDate"
