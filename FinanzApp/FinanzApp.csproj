@@ -100,7 +100,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Plugin.CloudFirestore" Version="4.1.0" />
-		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.92" />
+		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -145,6 +145,9 @@
 	  <MauiXaml Update="Views\Menu\Views\Home.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Statistics\StatisticsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Transactions\View\CreateTransactions.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -154,6 +157,10 @@
 	  <MauiXaml Update="Views\Transactions\View\Transaction.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views\Statistics\ViewModel\" />
 	</ItemGroup>
 
 </Project>
